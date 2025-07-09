@@ -11,8 +11,6 @@ let currentVideoTitle = '';
 // 全局变量用于倒序状态
 let episodesReversed = false;
 
-window.currentEpisodes = currentEpisodes;
-
 // 页面初始化
 document.addEventListener('DOMContentLoaded', function () {
     // 初始化API复选框
@@ -950,9 +948,11 @@ async function showDetails(id, vod_name, sourceCode) {
 
             currentEpisodes = data.episodes;
             currentEpisodeIndex = 0;
-
+            window.currentEpisodes = currentEpisodes;
+            
             modalContent.innerHTML = `
                 ${detailInfoHtml}
+                <input type="hidden" id="currentEpisodes" value="${currentEpisodes}">
                 <div class="flex flex-wrap items-center justify-between mb-4 gap-2">
                     <div class="flex items-center gap-2">
                         <button onclick="toggleEpisodeOrder('${sourceCode}', '${id}')" 
