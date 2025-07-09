@@ -11,6 +11,8 @@ let currentVideoTitle = '';
 // 全局变量用于倒序状态
 let episodesReversed = false;
 
+window.currentEpisodes = currentEpisodes;
+
 // 页面初始化
 document.addEventListener('DOMContentLoaded', function () {
     // 初始化API复选框
