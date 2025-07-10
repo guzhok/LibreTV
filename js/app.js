@@ -971,7 +971,9 @@ async function showDetails(id, vod_name, sourceCode) {
                 <div id="episodesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
                     ${renderEpisodes(vod_name, sourceCode, id)}
                 </div>
-                <div style="width:100%;height:25px;text-align: center;color:#FFF">以下是跳转到扩展主程序按钮</div>
+                <div style="width:100%; height:50px; display:flex; align-items:flex-end; justify-content:center; color:#FFF;">
+                    以下是跳转到扩展主程序按钮
+                </div>
                 <div id="extendGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
                     ${renderExtension(vod_name)}
                 </div>
