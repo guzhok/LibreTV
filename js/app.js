@@ -1114,7 +1114,7 @@ function renderEpisodes(vodName, sourceCode, vodId) {
     }).join('');
 }
 
-// 渲染扩展调用按钮
+// 渲染扩展调用按钮.
 function renderExtension(vodName) {
     const episodes = episodesReversed ? [...currentEpisodes].reverse() : currentEpisodes;
     return episodes.map((episode, index) => {
@@ -1129,7 +1129,7 @@ function renderExtension(vodName) {
     }).join('');
 }
 
-//转到扩展应用
+//转到扩展应用.
 function openExtend(episode, vodName, realIndex) {
     let ExtendUrl= `spyvideo://save?title=${vodName}_${realIndex + 1}&link=${episode}`;
     window.location.href = ExtendUrl;
