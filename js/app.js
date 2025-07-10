@@ -1131,8 +1131,11 @@ function renderExtension(vodName) {
 
 //转到扩展应用.
 function openExtend(episode, vodName, realIndex) {
-    let ExtendUrl= `spyvideo://save?title=${vodName}_${realIndex + 1}&link=${episode}`;
+
+    let result = vodName.replace(/\s/g, "");    
+    let ExtendUrl= `spyvideo://save?title=${result}_${realIndex + 1}&link=${episode}`;
     window.location.href = ExtendUrl;
+    
 }
 
 // 复制视频链接到剪贴板
