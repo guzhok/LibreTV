@@ -971,6 +971,10 @@ async function showDetails(id, vod_name, sourceCode) {
                 <div id="episodesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
                     ${renderEpisodes(vod_name, sourceCode, id)}
                 </div>
+                <div id="episodesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
+                    ${renderExtension(vod_name)}
+                </div>
+                
             `;
         } else {
             modalContent.innerHTML = `
@@ -1108,6 +1112,27 @@ function renderEpisodes(vodName, sourceCode, vodId) {
             </button>
         `;
     }).join('');
+}
+
+// 渲染扩展调用按钮
+function renderExtension(vodName) {
+    const episodes = episodesReversed ? [...currentEpisodes].reverse() : currentEpisodes;
+    return episodes.map((episode, index) => {
+        // 根据倒序状态计算真实的剧集索引
+        const realIndex = episodesReversed ? currentEpisodes.length - 1 - index : index;
+        return `
+            <button id="episode-${realIndex}" onclick="openExtend('${episode}','${vodName.replace(/"/g, '&quot;')}', ${realIndex})" 
+                    class="px-4 py-2 bg-[#222] hover:bg-[#333] border border-[#333] rounded-lg transition-colors text-center episode-btn">
+                ${realIndex + 1}
+            </button>
+        `;
+    }).join('');
+}
+
+//转到扩展应用
+function openExtend(episode, vodName, realIndex) {
+    let ExtendUrl= `spyvideo://save?title=${vodName}_${realIndex + 1}&link=${episode}`;
+    window.location.href = ExtendUrl;
 }
 
 // 复制视频链接到剪贴板
